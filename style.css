@@ -4,12 +4,10 @@
 	box-sizing: border-box;
 	user-select: none;
 }
-a:focus {
-	outline: 0;
-}
-html {
-	background: #313940;
-}
+a:focus { outline: 0; }
+
+html { background: #313940; }
+
 body {
 	min-height: 100vh;
 	background-color: #313940;
@@ -22,12 +20,12 @@ body {
 	width: 100%;
 	border-bottom: 1px solid;
 	border-image-slice: 1;
-	border-image-source: linear-gradient(to left, #38495a, #a2abb3, #38495a);
+	border-image-source: linear-gradient(to left, #38495a, #f5d784, #38495a);
 }
 .header-title {
 	line-height: 60px;
 	font-weight: 300;
-	color: #fff;
+	color: #f5d784;
 }
 .main {
 	min-height: calc(100vh - 110px);
@@ -63,18 +61,16 @@ body {
 	cursor: pointer;
 	transition: 0.3s;
 }
-.btn:not(.btn-active):hover {
-	background-color: #515961;
-}
-.btn:active {
-	background-color: #00c9b7;
-}
+.btn:not(.btn-active):hover { background-color: #515961; }
+
+.btn:active { background-color: #fcba03; }
+
 .btn-active {
-	background-color: #00b4a4;
+	background-color: #fcba03;
+	color: #313940;
 }
-.btn-active:hover {
-	background-color: #00c9b7;
-}
+.btn-active:hover { background-color: #fcba03; }
+
 .piano {
 	position: relative;
 	display: flex;
@@ -94,9 +90,8 @@ body {
 	transition: 0.3s;
 	cursor: pointer;
 }
-.piano-key:hover {
-	background-color: #fff;
-}
+.piano-key:hover { background-color: #fff; }
+
 .keys-sharp {
 	position: absolute;
 	top: 0;
@@ -119,9 +114,8 @@ body {
 	transform-origin: center top;
 }
 .piano-key.piano-key-active,
-.piano-key.sharp.piano-key-active {
-	transform: scale(0.96);
-}
+.piano-key.sharp.piano-key-active { transform: scale(0.96); }
+
 .piano-key.none {
 	background-color: transparent;
 	border: 0;
@@ -130,6 +124,7 @@ body {
 }
 .piano-key::before,
 .piano-key::after {
+	content: attr(data-note);
 	position: absolute;
 	width: 40px;
 	height: 40px;
@@ -140,46 +135,32 @@ body {
 	bottom: -45px;
 	left: 20px;
 	transition: 0.3s;
+	pointer-events: none;
 }
-
-.piano-key-note::after { content: attr(data-note); }
-
-.piano-key-letter::after { content: attr(data-letter); }
-
+.piano-key::after {
+	display: none;
+	content: attr(data-letter);
+}
 .piano-key:hover::before,
-.piano-key:hover::after {
-	color: #d7dfe6;
-}
+.piano-key:hover::after { color: #d7dfe6; }
 
-.sharp:active {
-	border-top: 0;
-}
+.sharp:active { border-top: 0; }
 
 .piano-key.sharp::before,
 .piano-key.sharp::after {
 	bottom: 175px;
 	left: 7px;
 }
-.piano-key.letter::before {
-	display: none;
-}
-.piano-key.letter::after {
-	display: block;
-}
-.piano-key-letter::before {
-	content: attr(data-letter);
-}
+.piano-key.letter::before { display: none; }
 
-.piano-key-remove-mouse:active::before {
-	color: #a2abb3;
-}
+.piano-key.letter::after { display: block; }
 
-.piano-key-active-pseudo:hover::after,
-.piano-key-active-pseudo:hover::before,
+.piano-key-letter::before { content: attr(data-letter); }
+
+.piano-key-active:hover::before,
+.piano-key-active:hover::after,
 .piano-key-active::after,
-.piano-key-active::before {
-	color: #00b4a4;
-}
+.piano-key-active::before { color: #fcba03; }
 
 .fullscreen {
 	position: fixed;
@@ -195,16 +176,14 @@ body {
 	cursor: pointer;
 	background-image: url("assets/svg/fullscreen-open.svg");
 }
-.fullscreen:hover {
-	background-color: rgba(255, 255, 255, 0.5);
-}
-:-webkit-full-screen .fullscreen {
-	background-image: url("assets/svg/fullscreen-exit.svg");
-}
+.fullscreen:hover { background-color: rgba(255, 255, 255, 0.5); }
+
+:-webkit-full-screen .fullscreen { background-image: url("assets/svg/fullscreen-exit.svg"); }
+
 .footer {
 	border-top: 1px solid;
 	border-image-slice: 1;
-	border-image-source: linear-gradient(to left, #38495a, #a2abb3, #38495a);
+	border-image-source: linear-gradient(to left, #38495a, #f5d784, #38495a);
 }
 .footer-container {
 	padding: 0 15px;
@@ -225,14 +204,14 @@ body {
 	background-repeat: no-repeat;
 	background-position: left center;
 	line-height: 45px;
-	color: #cbd5de;
+	color: #f5d784;
 	font-size: 16px;
 	font-family: "Open Sans", sans-serif;
 	transition: 0.3s;
 }
-.github:hover {
-	color: #fff;
-}
+.github:hover { color: #fff; }
+.rss,
+.rss-year { }
 .rss {
 	display: block;
 	position: relative;
@@ -251,7 +230,7 @@ body {
 	right: 0;
 	font-size: 21px;
 	letter-spacing: -2px;
-	color: #cbd5de;
+	color: #f5d784;
 	line-height: 0.9;
 	font-weight: bold;
 	transition: 0.3s;
@@ -269,9 +248,8 @@ body {
 	}
 }
 @media (max-width: 600px) {
-	.main {
-		padding-top: 40px;
-	}
+	.main { padding-top: 40px; }
+
 	.piano {
 		width: 310px;
 		height: 160px;
